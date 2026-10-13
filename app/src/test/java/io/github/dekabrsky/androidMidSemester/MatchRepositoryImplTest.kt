@@ -13,6 +13,7 @@ import io.github.dekabrsky.androidMidSemester.data.repository.MatchRepositoryImp
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import retrofit2.Response
 import java.time.LocalDate
 
 class MatchRepositoryImplTest {
@@ -43,8 +44,8 @@ class MatchRepositoryImplTest {
         }
 
         override suspend fun game(id: Long): SingleEnvelope<GameDto> = SingleEnvelope(status = "OK")
-        override suspend fun teams(country: String, offset: Int, limit: Int): TeamEnvelope<SStatsTeamDto> =
-            TeamEnvelope(status = "OK")
+        override suspend fun teams(country: String, offset: Int, limit: Int): Response<TeamEnvelope<SStatsTeamDto>> =
+            Response.success(TeamEnvelope(status = "OK"))
 
         private fun game(id: Long, homeId: Long, awayId: Long) = GameDto(
             id = id,

@@ -8,6 +8,7 @@ import io.github.dekabrsky.androidMidSemester.data.api.dto.SStatsTeamDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.Response
 
 interface SStatsApi {
 
@@ -27,5 +28,5 @@ interface SStatsApi {
         @Query("Country") country: String = "Russia",
         @Query("offset") offset: Int = 0,
         @Query("limit") limit: Int = 100,
-    ): TeamEnvelope<SStatsTeamDto>
+    ): Response<TeamEnvelope<SStatsTeamDto>>
 }
